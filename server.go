@@ -7,7 +7,11 @@ import (
 
 func handlerFunc(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-type", "text/html")
-	fmt.Fprint(w, "<h1>Welcome to my bad page!<h1>")
+	if r.URL.Path == "/" {
+		fmt.Fprint(w, "<h1>Welcome to my bad page!<h1>")
+	} else if r.URL.Path == "/contact" {
+		fmt.Fprint(w, "To get in touch with <a href=\"mailto:alisher1999@gmail.com\">alisher1999@gmail.com</a>.")
+	}
 }
 
 func main() {
